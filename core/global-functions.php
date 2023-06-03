@@ -99,3 +99,29 @@ function redirect($uri = '/', $code = 302) {
     header("Location $newLocation", true, $code);
     exit();
 }
+
+function theme_dir($path = '')
+{
+    $newPath = '/theme';
+    if ($path) {
+        if ($path[0] !== '\\') {
+            $newPath .= '\\';
+        }
+    }
+    return site_dir($newPath . $path);
+}
+
+function template_block($blockName)
+{
+    include theme_dir('page_blocks/' . $blockName . '.php' );
+}
+
+function site_title()
+{
+    return CONFIG['title'];
+}
+
+function head_tags()
+{
+    return CONFIG['head_tags'];
+}

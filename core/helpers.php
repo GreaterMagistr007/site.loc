@@ -23,7 +23,7 @@ function request()
 }
 $request = request();
 
-function href($path)
+function href($path = '/')
 {
-    return request()->href($path);
+    return request()::href($path);
 }
