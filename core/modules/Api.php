@@ -9,7 +9,7 @@ class Api
 
     public function __construct()
     {
-
+        $this->checkArtickesFile();
     }
 
     public function checkArtickesFile()
