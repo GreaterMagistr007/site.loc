@@ -130,8 +130,6 @@
             </div>
         </div>
         <!-- Blog List End -->
-
-
         <?= template_block('footer') ?>
     </div>
 </div>

@@ -111,6 +111,11 @@ function theme_dir($path = '')
     return site_dir($newPath . $path);
 }
 
+function DS($path = '/') {
+    $arr = ['/', '\\', '\\\\'];
+    return str_replace($arr, DIRECTORY_SEPARATOR, $path);
+}
+
 function template_block($blockName)
 {
     include theme_dir('page_blocks/' . $blockName . '.php' );
