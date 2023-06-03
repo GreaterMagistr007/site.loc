@@ -18,17 +18,3 @@ require_once 'router.php';
 
 // Запускаем обработку роутинга:
 container('Route')::run();
-
-//Route::list();
-
-
-dd(container('Route')::list());
-
-
-
-
-
-//
-dd($request);
-
-sayHello();

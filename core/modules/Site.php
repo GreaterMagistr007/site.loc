@@ -2,11 +2,20 @@
 
 namespace core\modules;
 
+use theme\Theme;
+
 class Site
 {
+    public Theme $theme;
+
+    public function __construct()
+    {
+        $this->theme = new Theme();
+    }
+
     public function getMainPage()
     {
-        dd('Главная страница');
+        $this->theme->mainPage();
     }
 
     public function getArticlePage()
