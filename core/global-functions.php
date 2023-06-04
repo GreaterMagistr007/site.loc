@@ -130,3 +130,39 @@ function head_tags()
 {
     return CONFIG['head_tags'];
 }
+
+function success($text, $return_values_array = [])
+{
+    exit(
+        json_encode(
+            array_merge(
+                [
+                    "text" =>  $text,
+                    "type"  =>  "success"
+                ],
+                $return_values_array
+            )
+        )
+    );
+}
+
+/**
+ * Отрицательный ответ для Api
+ * @param $text
+ * @param $return_values_array
+ * @return void
+ */
+function error($text, $return_values_array = [])
+{
+    exit(
+        json_encode (
+            array_merge(
+                [
+                    "text" => $text,
+                    "type" => "error"
+                ],
+                $return_values_array
+            )
+        )
+    );
+}

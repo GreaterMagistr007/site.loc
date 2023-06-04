@@ -12,7 +12,11 @@ class Api
         $this->checkArtickesFile();
     }
 
-    public function checkArtickesFile()
+    /**
+     * Получить маршрут к файлу со статьями
+     * @return string
+     */
+    public function getArticlesFile()
     {
         $file = DS(site_dir(self::ARTICLES_FILE));
 
@@ -33,7 +37,21 @@ class Api
             }
             file_put_contents($file, '{}');
         }
+
+        return $file;
     }
 
+    public function checkArtickesFile()
+    {
+        $file = $this->getArticlesFile();
+        success([
+            'file' => $file
+        ]);
+    }
+
+    public function getArticles()
+    {
+        return file_get_contents(DS(site_dir(self::ARTICLES_FILE)));
+    }
 
 }
