@@ -145,6 +145,12 @@ class Route
             if ($isSimilar) {
                 // Найден подходящий роут. Передаем управление:
                 list($module, $function) = explode('@', $route[$method]['action']);
+
+                // При запросе к Api нужно проверить наличие токена
+                if ($module === 'Api' && request('token') !== Api::$token) {
+                    return redirect(404);
+                }
+
                 $module = container($module);
                 return $module->$function($arguments);
             }

@@ -133,6 +133,10 @@ function head_tags()
 
 function success($text, $return_values_array = [])
 {
+    if (is_array($text)) {
+        $return_values_array = $text;
+        $text = 'ok';
+    }
     exit(
         json_encode(
             array_merge(
@@ -154,6 +158,10 @@ function success($text, $return_values_array = [])
  */
 function error($text, $return_values_array = [])
 {
+    if (is_array($text)) {
+        $return_values_array = $text;
+        $text = 'error';
+    }
     exit(
         json_encode (
             array_merge(

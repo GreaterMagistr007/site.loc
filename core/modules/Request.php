@@ -75,4 +75,22 @@ class Request
             $_SERVER['REDIRECT_URL'] :
             explode('?', $_SERVER['REQUEST_URI'])[0];
     }
+
+    public function __set(string $name, $value): void
+    {
+        $this->$name = $value;
+    }
+
+    public function __get(string $name)
+    {
+        if (isset($this->$name)) {
+            return $this->$name;
+        }
+
+        if (isset($_REQUEST[$name])) {
+            return $_REQUEST[$name];
+        }
+
+        return null;
+    }
 }

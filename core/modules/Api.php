@@ -7,9 +7,13 @@ class Api
     // путь к файлу со статьями относительно корня сайта (выше public)
     const ARTICLES_FILE = '/articles/articles.json';
 
+    public static $token = CONFIG['token'];
+
+    private string $articlesFile;
+
     public function __construct()
     {
-        $this->checkArtickesFile();
+        $this->articlesFile = $this->getArticlesFile();
     }
 
     /**
@@ -51,7 +55,16 @@ class Api
 
     public function getArticles()
     {
-        return file_get_contents(DS(site_dir(self::ARTICLES_FILE)));
+        $articles = json_decode(file_get_contents($this->getArticlesFile()));
+
+        success([
+            'articles' => $articles
+        ]);
+    }
+
+    public function addArticle()
+    {
+
     }
 
 }

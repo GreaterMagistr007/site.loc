@@ -17,8 +17,16 @@ function container($module = '')
 /**
  * @return \core\modules\Request
  */
-function request()
+function request($key = null, $value = null)
 {
+    $result = container('Request');
+    if (!is_null($key) && is_string($key) && strlen($key)) {
+        if (!is_null($value)) {
+            $result->$key = $value;
+            return $result;
+        }
+        return $result->$key;
+    }
     return container('Request');
 }
 $request = request();
